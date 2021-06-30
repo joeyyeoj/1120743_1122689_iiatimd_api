@@ -25,7 +25,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, User $product)
     {
         //Validate data
         $data = $request->only('name', 'sku', 'price', 'quantity');
