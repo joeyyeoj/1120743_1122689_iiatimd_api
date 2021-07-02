@@ -1,4 +1,3 @@
-
 <?php
 namespace App\Http\Controllers;
 
@@ -9,7 +8,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Validator;
 
-class ProductController extends Controller
+class UserController extends Controller
 {
     protected $user;
 
