@@ -56,4 +56,28 @@ class ProductController extends Controller
             'data' => $product
         ], Response::HTTP_OK);
     }
+
+    public function getContactInfo($id){
+        $contactUser = \App\Models\User::find($id);
+        
+        $contactInfo = [
+            'naam' => $contactUser->name,
+            'publieke_email' => $contactUser->publieke_email,
+            'telefoonnummer' => $contactUser->telefoonnummer,
+            'twitter' => $contactUser->twitter,
+            'facebook' => $contactUser->facebook,
+            'snapchat' => $contactUser->snapchat,
+            'instagram' => $contactUser->instagram,
+            'linkedin' => $contactUser->linkedin,
+            'tiktok' => $contactUser->tiktok,
+            'geboortedatum' => $contactUser->geboortedatum,
+            'adres' => $contactUser->adres,
+            'woonplaats' => $contactUser->woonplaats,
+            'postcode' => $contactUser->postcode,
+            'land' => $contactUser->land,
+        ];
+        return response()->json(['contactInfo' => $contactInfo], 200);
+    }
+
+
 }
