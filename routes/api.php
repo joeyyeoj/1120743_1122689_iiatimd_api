@@ -8,7 +8,7 @@ use App\Http\Controllers\UserController;
 Route::post('login', [ApiController::class, 'authenticate']);
 Route::post('register', [ApiController::class, 'register']);
 
-Route::get('getContact/{id}', [UserController::class], 'getContactInfo');
+Route::get('getContact/{id}', [UserController::class, 'getContactInfo']);
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('logout', [ApiController::class, 'logout']);
