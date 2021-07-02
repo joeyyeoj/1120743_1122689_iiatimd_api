@@ -77,7 +77,7 @@ class UserController extends Controller
             'land' => $contactUser->land,
         ];
 
-        return response()->json(['contactInfo' => 'test'], 200);
+        return response()->json(['contactInfo' => $contactInfo], 200);
     }
 
 
