@@ -12,10 +12,11 @@ class UserController extends Controller
 {
     protected $user;
 
-    public function __construct()
-    {
-        $this->user = JWTAuth::parseToken()->authenticate();
-    }
+    //ff weggehaald voor development
+    // public function __construct()
+    // {
+    //     $this->user = JWTAuth::parseToken()->authenticate();
+    // }
 
     /**
      * Update the specified resource in storage.
