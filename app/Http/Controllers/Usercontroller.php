@@ -76,7 +76,8 @@ class ProductController extends Controller
             'postcode' => $contactUser->postcode,
             'land' => $contactUser->land,
         ];
-        return response()->json(['contactInfo' => $contactInfo], 200);
+
+        return response()->json(['contactInfo' => 'test'], 200);
     }
 
 
