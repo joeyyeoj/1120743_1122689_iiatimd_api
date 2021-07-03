@@ -108,7 +108,7 @@ class ApiController extends Controller
         }
     }
 
-    public function get_user(Request $request)
+    public function get_userInfo(Request $request)
     {
         $this->validate($request, [
             'token' => 'required'
