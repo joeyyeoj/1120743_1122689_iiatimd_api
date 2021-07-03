@@ -118,4 +118,55 @@ class ApiController extends Controller
 
         return response()->json(['user' => $user]);
     }
+
+    public function get_user(Request $request, User $userId) {
+        $user = User::find($userId);
+        return response()->json(['user' => $user]);
+    }
+
+    public function update(Request $request) {
+        $data = $request->only('token');
+        $validator = Validator::make($data, [
+            'token' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'succes' => false,
+                'error' => $validator->messages()
+            ], 200);
+        }
+
+        $user = JWTAuth::authenticate($request->token);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->public_email = $request->public_email;
+        $user->telefoonnummer = $request->telefoonnummer;
+        $user->twitter = $request->twitter;
+        $user->facebook = $request->facebook;
+        $user->snapchat = $request->snapchat;
+        $user->instagram = $request->instagram;
+        $user->linkedin = $request->linkedin;
+        $user->tiktok = $request->tiktok;
+        $user->geboortedatum = $request->geboortedatum;
+        $user->adres = $request->adres;
+        $user->woonplaats = $request->woonplaats;
+        $user->postcode = $request->postcode;
+        $user->land = $request->land;
+        try {
+            $user->save();
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e,
+            ]);
+        }
+
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Gebruiker is geupdated',
+            'request' => $user,
+        ], Response::HTTP_OK);
+    }
 }
