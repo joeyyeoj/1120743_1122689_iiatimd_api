@@ -217,10 +217,31 @@ class ApiController extends Controller
         $user = JWTAuth::authenticate($request->token);
         $contacts = $user->myContacts;
 
+        $contactsInfoArray = [];
+
+        foreach($contacts as $contact){
+            $contactToBeRetrieved = User::find($contact->contactId);
+            $contactObject = (object) [
+                'id' => $contactToBeRetrieved->id,
+                'name' => $contactToBeRetrieved->name,
+                'public_email' => $contactToBeRetrieved->public_email,
+                'telefoonnummer' => $contactToBeRetrieved->telefoonnummer,
+                'twitter' => $contactToBeRetrieved->twitter,
+                'facebook' => $contactToBeRetrieved->facebook,
+                'snapchat' => $contactToBeRetrieved->snapchat,
+                'instagram' => $contactToBeRetrieved->instagram,
+                'linkedin' => $contactToBeRetrieved->linkedin,
+                'tiktok' => $contactToBeRetrieved->tiktok,
+                'geboortedatum' => $contactToBeRetrieved->geboortedatum,
+            ];
+
+            array_push($contactsInfoArray, $contactObject);
+        }
+
         return response()->json([
             'success' => true,
             'message' => 'Contacts retrieved succesfully',
-            'data' => $contacts
+            'data' => $contactsInfoArray
         ], Response::HTTP_OK);
           
     }

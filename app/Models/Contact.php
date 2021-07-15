@@ -14,4 +14,5 @@ class Contact extends Model
     protected $fillable = [
         'ownerId', 'contactId'
     ];
+
 }
