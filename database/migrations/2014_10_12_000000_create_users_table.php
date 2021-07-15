@@ -30,10 +30,6 @@ class CreateUsersTable extends Migration
             $table->string('linkedin')->default("-")->nullable();
             $table->string('tiktok')->default("-")->nullable();
             $table->date('geboortedatum')->nullable();
-            $table->string('adres')->default("-")->nullable();
-            $table->string('woonplaats')->default("-")->nullable();
-            $table->string('postcode')->default("-")->nullable();
-            $table->string('land')->default("-")->nullable();
         });
     }
 

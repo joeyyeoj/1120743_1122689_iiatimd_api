@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use JWTAuth;
 use App\Models\User;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpFoundation\Response;
@@ -168,5 +169,59 @@ class ApiController extends Controller
             'message' => 'Gebruiker is geupdated',
             'request' => $user,
         ], Response::HTTP_OK);
+    }
+
+
+    public function insertNewContact(Request $request){
+        $data = $request->only('token');
+        $validator = Validator::make($data, [
+            'token' => 'required',
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json([
+                'succes' => false,
+                'error' => $validator->messages()
+            ], 200);
+        };
+
+        $user = JWTAuth::authenticate($request->token);
+        $userId = $user->id;
+        $contactId = User::find($request->contactId);
+        
+        $contact = Contact::create([
+            'ownerId' => $userId,
+            'contactId' => $contactId->id
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Contact added succesfully',
+            'data' => $contact
+        ], Response::HTTP_OK);
+    }
+
+    public function getMyContacts(Request $request){
+        $data = $request->only('token');
+        $validator = Validator::make($data, [
+            'token' => 'required',
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json([
+                'succes' => false,
+                'error' => $validator->messages()
+            ], 200);
+        };
+
+        $user = JWTAuth::authenticate($request->token);
+        $contacts = $user->myContacts;
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Contacts retrieved succesfully',
+            'data' => $contacts
+        ], Response::HTTP_OK);
+          
     }
 }
