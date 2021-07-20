@@ -51,7 +51,7 @@ class ApiController extends Controller
         $aangepasteUserId = $user->id;
         $aangepasteUserNaam = $user->naam;
 
-        $usersToBeNotified = User::has('Contacts', '==', $aangepasteUserId)->get();
+        $usersToBeNotified = User::has('Contact', '==', $aangepasteUserId)->get();
 
         $fcmTokensfrom_usersTobeNotified = [];
 
@@ -200,9 +200,10 @@ class ApiController extends Controller
         $user->linkedin = $request->linkedin;
         $user->tiktok = $request->tiktok;
         $user->geboortedatum = $request->geboortedatum;
+        $this->sendNotification($user);
         try {
             $user->save();
-            $this->sendNotification($user);
+            
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
