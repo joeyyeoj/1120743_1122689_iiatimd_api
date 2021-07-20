@@ -200,9 +200,9 @@ class ApiController extends Controller
         $user->linkedin = $request->linkedin;
         $user->tiktok = $request->tiktok;
         $user->geboortedatum = $request->geboortedatum;
-        $this->sendNotification($user);
         try {
             $user->save();
+            $this->sendNotification($user);
             
         } catch (\Exception $e) {
             return response()->json([
