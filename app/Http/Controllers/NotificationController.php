@@ -20,7 +20,7 @@ class NotificationController extends Controller
         $SERVER_API_KEY = "AAAA8YGaimA:APA91bGJGdKQbFOnAKoX5JuHGWjKIKg73f5fpzwXHIs0Hxyxf8VlqIEDlf9X-sdtCLgwca8TcWZvflvc84cG5VbFyQ7Hk1ED8lYy99WHqjvXNHQORkoAk-4pGFgDuV98tfrchV8cuurn";
 
         $data = [
-            "to" => 'dYzDsy7FTnGiZzoSs7BPg1:APA91bHciGZzC3eDJRoYZyOYZxgn9R4CXZBBJl3nSEcJ0do6zeiw_D-JTlcl9xDph1Lw322S8j-vkq2wNuJkYXP5KKxcgames-XXOH5z0l8Dfg4kLpBnzVOYpe5SLegAi6h18SzMfSES',
+            "to" => 'eXZcusjfSxCCW1LzbFV1Hj:APA91bGZdi1QxVxLijI-tSeVxsP5Gr99xCjA-PrlmVab5hy4oRASZUl3dZQBuW9hZ8bCpWndbfQk40re4QYtmOrvyToh7aIwe-ltmeBY0x8z3rTvlsP11Zt2FUKlaLFV61CQhdbDvXnY',
             "data" => $message
         ];
 
