@@ -61,7 +61,7 @@ class ApiController extends Controller
         $SERVER_API_KEY = "AAAA8YGaimA:APA91bGJGdKQbFOnAKoX5JuHGWjKIKg73f5fpzwXHIs0Hxyxf8VlqIEDlf9X-sdtCLgwca8TcWZvflvc84cG5VbFyQ7Hk1ED8lYy99WHqjvXNHQORkoAk-4pGFgDuV98tfrchV8cuurn";
 
         $data = [
-            "to" => $fcmTokensfrom_usersTobeNotified,
+            "to" => "eXZcusjfSxCCW1LzbFV1Hj:APA91bGZdi1QxVxLijI-tSeVxsP5Gr99xCjA-PrlmVab5hy4oRASZUl3dZQBuW9hZ8bCpWndbfQk40re4QYtmOrvyToh7aIwe-ltmeBY0x8z3rTvlsP11Zt2FUKlaLFV61CQhdbDvXnY",
             "data" => array(
                 "title" => "Contact update:",
                 "body" => $aangepasteUserNaam . " heeft hun gegevens aangepast!",
