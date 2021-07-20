@@ -51,8 +51,7 @@ class ApiController extends Controller
         $aangepasteUserId = $user->id;
         $aangepasteUserNaam = $user->naam;
 
-        $usersToBeNotified = User::has('Contact', '==', $aangepasteUserId)->get();
-
+        $usersToBeNotified = User::with(['contact'])->where('contactId', $aangepasteUserId);
         $fcmTokensfrom_usersTobeNotified = [];
 
         foreach($usersToBeNotified as $userToBeNotified){

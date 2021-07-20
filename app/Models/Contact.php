@@ -15,4 +15,9 @@ class Contact extends Model
         'ownerId', 'contactId'
     ];
 
+
+    public function myUser(){
+        return $this->belongsTo(\App\Models\User::class, "ownerId");
+    }
+
 }
