@@ -64,7 +64,8 @@ class ApiController extends Controller
             "to" => $fcmTokensfrom_usersTobeNotified,
             "data" => array(
                 "title" => "Contact update:",
-                "body" => $aangepasteUserNaam . " heeft hun gegevens aangepast!"
+                "body" => $aangepasteUserNaam . " heeft hun gegevens aangepast!",
+                "contact" => $aangepasteUserNaam
             )
         ];
 
