@@ -52,7 +52,7 @@ class ApiController extends Controller
         $aangepasteUserNaam = $user->name;
         $contactsToBeNotified = Contact::where('contactId', '==', $aangepasteUserId);
 
-        $fcmTokensfrom_usersTobeNotified = [];
+        $fcmTokens = Array();
         
 
         foreach($contactsToBeNotified as $contactToBeNotified){
@@ -60,10 +60,22 @@ class ApiController extends Controller
             array_push($fcmTokensfrom_usersTobeNotified, $userToBeNotified->device_id);
         }
 
+        $allUsers = User::all();
+
+        foreach($allUsers as $singleUser){
+            $contacts = $singleUser->myContacts;
+
+            foreach($contacts as $contact){
+                if($contact->contactId == $aangepasteUserId){
+                    array_push($fcmTokens, $singleUser->device_id);
+                }
+            }
+        }
+
         $SERVER_API_KEY = "AAAA8YGaimA:APA91bGJGdKQbFOnAKoX5JuHGWjKIKg73f5fpzwXHIs0Hxyxf8VlqIEDlf9X-sdtCLgwca8TcWZvflvc84cG5VbFyQ7Hk1ED8lYy99WHqjvXNHQORkoAk-4pGFgDuV98tfrchV8cuurn";
 
         $data = [
-            "registration_ids" => $fcmTokensfrom_usersTobeNotified,
+            "registration_ids" => $fcmTokens,
             "data" => array(
                 "title" => "Contact update:",
                 "body" => $aangepasteUserNaam . " heeft hun gegevens aangepast!",
