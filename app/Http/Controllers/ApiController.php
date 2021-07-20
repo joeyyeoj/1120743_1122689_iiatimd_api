@@ -49,9 +49,9 @@ class ApiController extends Controller
     public function sendNotification($user){
 
         $aangepasteUserId = $user->id;
-        $aangepasteUserNaam = $user->naam;
+        $aangepasteUserNaam = $user->name;
 
-        $usersToBeNotified = User::with(['contact'])->where('contactId', $aangepasteUserId);
+        $usersToBeNotified = User::with(['contact'])->where('contactId', $aangepasteUserId)->get();
         error_log($usersToBeNotified);
         $fcmTokensfrom_usersTobeNotified = [];
 
