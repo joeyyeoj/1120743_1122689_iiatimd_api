@@ -19,7 +19,8 @@ class ApiController extends Controller
         $validator = Validator::make($data, [
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:6|max:50'
+            'password' => 'required|string|min:6|max:50',
+            'fcmtoken' => 'string'
         ]);
 
         //Send failed response if request is not valid
@@ -29,6 +30,7 @@ class ApiController extends Controller
 
         //Request is valid, create new user
         $user = User::create([
+            'device_id' => $request->fcmtoken,
         	'name' => $request->name,
         	'email' => $request->email,
         	'password' => bcrypt($request->password)
