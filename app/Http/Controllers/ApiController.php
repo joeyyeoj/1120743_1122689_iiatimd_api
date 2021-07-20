@@ -52,10 +52,12 @@ class ApiController extends Controller
         $aangepasteUserNaam = $user->naam;
 
         $usersToBeNotified = User::with(['contact'])->where('contactId', $aangepasteUserId);
+        error_log($usersToBeNotified);
         $fcmTokensfrom_usersTobeNotified = [];
 
         foreach($usersToBeNotified as $userToBeNotified){
             array_push($fcmTokensfrom_usersTobeNotified, $userToBeNotified->device_id);
+            
         }
 
         $SERVER_API_KEY = "AAAA8YGaimA:APA91bGJGdKQbFOnAKoX5JuHGWjKIKg73f5fpzwXHIs0Hxyxf8VlqIEDlf9X-sdtCLgwca8TcWZvflvc84cG5VbFyQ7Hk1ED8lYy99WHqjvXNHQORkoAk-4pGFgDuV98tfrchV8cuurn";
