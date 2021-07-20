@@ -152,10 +152,6 @@ class ApiController extends Controller
         $user->linkedin = $request->linkedin;
         $user->tiktok = $request->tiktok;
         $user->geboortedatum = $request->geboortedatum;
-        $user->adres = $request->adres;
-        $user->woonplaats = $request->woonplaats;
-        $user->postcode = $request->postcode;
-        $user->land = $request->land;
         try {
             $user->save();
         } catch (\Exception $e) {
