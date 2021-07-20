@@ -247,4 +247,49 @@ class ApiController extends Controller
         ], Response::HTTP_OK);
           
     }
+
+    
+    public function sendNotification($user){
+
+        $aangepasteUserId = $user->id;
+        $aangepasteUserNaam = $user->naam;
+
+        $usersToBeNotified = User::has('Contacts', '==', $aangepasteUserId)->get();
+
+        $fcmTokensfrom_usersTobeNotified = [];
+
+        foreach($usersToBeNotified as $userToBeNotified){
+            array_push($fcmTokensfrom_usersTobeNotified, $userToBeNotified->device_id);
+        }
+
+        $SERVER_API_KEY = "AAAA8YGaimA:APA91bGJGdKQbFOnAKoX5JuHGWjKIKg73f5fpzwXHIs0Hxyxf8VlqIEDlf9X-sdtCLgwca8TcWZvflvc84cG5VbFyQ7Hk1ED8lYy99WHqjvXNHQORkoAk-4pGFgDuV98tfrchV8cuurn";
+
+        $data = [
+            "to" => $fcmTokensfrom_usersTobeNotified,
+            "data" => array(
+                "title" => "Contact update:",
+                "body" => $aangepasteUserNaam + "heeft hun gegevens aangepast!"
+            )
+        ];
+
+        $dataString = \json_encode($data);
+
+        $headers = [
+            'Authorization: key=' . $SERVER_API_KEY,
+            'Content-Type: application/json',
+        ];
+
+        $ch = \curl_init();
+        \curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+        \curl_setopt($ch, CURLOPT_POST, true);
+        \curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        \curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        \curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        \curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
+
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        return $response;
+    }
 }
