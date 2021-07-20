@@ -202,7 +202,7 @@ class ApiController extends Controller
         $user->geboortedatum = $request->geboortedatum;
         try {
             $user->save();
-            sendNotification($user);
+            $this->sendNotification($user);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
