@@ -19,5 +19,10 @@ class ContactSeeder extends Seeder
             'contactId' => 2
         ]);
 
+        DB::table('contactlist')->insert([
+            'ownerId' => 1,
+            'contactId' => 3
+        ]);
+
     }
 }
