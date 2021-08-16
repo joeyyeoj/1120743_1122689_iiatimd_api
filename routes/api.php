@@ -17,4 +17,3 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('getcontacts', [ApiController::class, 'getMyContacts']);
 });
 
-Route::post('send-notification', [App\Http\Controllers\NotificationController::class, 'send']);
