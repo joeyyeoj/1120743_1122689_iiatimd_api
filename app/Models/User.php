@@ -11,6 +11,8 @@ class User extends Authenticatable implements JWTSubject
 {
     use HasFactory, Notifiable;
 
+    public $primarykey = 'id';
+
     /**
      * The attributes that are mass assignable.
      *
