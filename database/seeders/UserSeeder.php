@@ -15,7 +15,6 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'device_id' => 'eXZcusjfSxCCW1LzbFV1Hj:APA91bGZdi1QxVxLijI-tSeVxsP5Gr99xCjA-PrlmVab5hy4oRASZUl3dZQBuW9hZ8bCpWndbfQk40re4QYtmOrvyToh7aIwe-ltmeBY0x8z3rTvlsP11Zt2FUKlaLFV61CQhdbDvXnY',
             'name' => "Joey",
             'email' => "joey@vetcoolproject.com",
             'password' => bcrypt('testpass'),
