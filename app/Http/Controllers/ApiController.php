@@ -176,7 +176,7 @@ class ApiController extends Controller
         return response()->json(['user' => $user]);
     }
 
-    public function get_user(Request $request, User $userId) {
+    public function get_user(Request $request, $userId) {
         $user = User::find($userId);
         return response()->json(['user' => $user]);
     }
