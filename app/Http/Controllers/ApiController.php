@@ -100,13 +100,12 @@ class ApiController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('email', 'password', 'fcmtoken');
+        $credentials = $request->only('email', 'password');
 
         //valid credential
         $validator = Validator::make($credentials, [
             'email' => 'required|email',
             'password' => 'required|string|min:6|max:50',
-            'fcmtoken' => 'required'
         ]);
 
         //Send failed response if request is not valid
@@ -117,7 +116,7 @@ class ApiController extends Controller
         //Request is validated
         //Crean token
         try {
-            if (! $token = JWTAuth::attempt($credentials->email, $credentials->password)) {
+            if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json([
                 	'success' => false,
                 	'message' => 'Login credentials are invalid.',
