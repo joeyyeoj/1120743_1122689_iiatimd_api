@@ -105,7 +105,8 @@ class ApiController extends Controller
         //valid credential
         $validator = Validator::make($credentials, [
             'email' => 'required|email',
-            'password' => 'required|string|min:6|max:50'
+            'password' => 'required|string|min:6|max:50',
+            'fcm_token' => 'required'
         ]);
 
         //Send failed response if request is not valid
@@ -130,6 +131,9 @@ class ApiController extends Controller
                 ], 500);
         }
 
+        $user = JWTAuth::authenticate($token);
+        $user->device_id = $request->fcm_token;
+
  		//Token created, return with success response and jwt token
         return response()->json([
             'success' => true,
@@ -151,6 +155,8 @@ class ApiController extends Controller
 
 		//Request is validated, do logout
         try {
+            $user = JWTAuth::authenticate($request->token);
+            $user->device_id = null;
             JWTAuth::invalidate($request->token);
 
             return response()->json([
