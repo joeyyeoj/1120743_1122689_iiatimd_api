@@ -122,10 +122,6 @@ class ApiController extends Controller
                 	'message' => 'Login credentials are invalid.',
                 ], 400);
             }
-            else {
-                $user = JWTAuth::toUser($token);
-                $user->device_id = $request->fcmtoken;
-            }
         } catch (JWTException $e) {
     	return $credentials;
             return response()->json([
