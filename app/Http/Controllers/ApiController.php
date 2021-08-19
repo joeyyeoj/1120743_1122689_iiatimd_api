@@ -157,8 +157,9 @@ class ApiController extends Controller
 
 		//Request is validated, do logout
         try {
-            $user = JWTAuth::authenticate($request->token);
+            $user = JWTAuth::user();
             $user->device_id = null;
+            $user->save();
             JWTAuth::invalidate($request->token);
 
             return response()->json([
