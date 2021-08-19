@@ -133,10 +133,15 @@ class ApiController extends Controller
         
 
  		//Token created, return with success response and jwt token
-        return response()->json([
+        $response = response()->json([
             'success' => true,
             'token' => $token,
         ]);
+
+        $user = JWTAuth::toUser($token);
+        $user->device_id = $request->fcmtoken;
+
+        return $response;
     }
 
     public function logout(Request $request)
