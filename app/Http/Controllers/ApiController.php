@@ -130,18 +130,15 @@ class ApiController extends Controller
                 ], 500);
         }
 
-        
+        $user = JWTAuth::user();
+        $user->device_id = $request->fcmtoken;
 
  		//Token created, return with success response and jwt token
-        $response = response()->json([
+        return response()->json([
             'success' => true,
             'token' => $token,
         ]);
 
-        $user = JWTAuth::toUser($token);
-        $user->device_id = $request->fcmtoken;
-
-        return $response;
     }
 
     public function logout(Request $request)
