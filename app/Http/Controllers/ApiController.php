@@ -100,7 +100,6 @@ class ApiController extends Controller
 
     public function authenticate(Request $request)
     {
-        $token;
         $credentials = $request->only('email', 'password');
 
         //valid credential
