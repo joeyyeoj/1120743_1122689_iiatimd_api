@@ -100,7 +100,7 @@ class ApiController extends Controller
 
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password', 'fcmtoken');
 
         //valid credential
         $validator = Validator::make($credentials, [
