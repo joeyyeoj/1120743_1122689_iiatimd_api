@@ -106,7 +106,7 @@ class ApiController extends Controller
         $validator = Validator::make($credentials, [
             'email' => 'required|email',
             'password' => 'required|string|min:6|max:50',
-            'fcm_token' => 'required'
+            'fcmtoken' => 'required'
         ]);
 
         //Send failed response if request is not valid
