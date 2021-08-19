@@ -132,7 +132,7 @@ class ApiController extends Controller
         }
 
         $user = auth()->user();
-        $user->device_id = $request->fcm_token;
+        $user->device_id = $request->fcmtoken;
 
  		//Token created, return with success response and jwt token
         return response()->json([
