@@ -100,6 +100,7 @@ class ApiController extends Controller
 
     public function authenticate(Request $request)
     {
+        $token;
         $credentials = $request->only('email', 'password');
 
         //valid credential
@@ -122,6 +123,10 @@ class ApiController extends Controller
                 	'message' => 'Login credentials are invalid.',
                 ], 400);
             }
+            else {
+                $user = JWTAuth::toUser($token);
+                $user->device_id = $request->fcmtoken;
+            }
         } catch (JWTException $e) {
     	return $credentials;
             return response()->json([
@@ -130,8 +135,7 @@ class ApiController extends Controller
                 ], 500);
         }
 
-        $user = JWTAuth::toUser($token);
-        $user->device_id = $request->fcmtoken;
+        
 
  		//Token created, return with success response and jwt token
         return response()->json([
