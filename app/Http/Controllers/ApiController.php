@@ -246,7 +246,7 @@ class ApiController extends Controller
         
         $contact = Contact::create([
             'ownerId' => $userId,
-            'contactId' => $contactId->id
+            'contactId' => $contactId
         ]);
 
         return response()->json([
