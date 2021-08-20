@@ -257,6 +257,7 @@ class ApiController extends Controller
             'success' => true,
             'message' => 'Gebruiker is geupdated',
             'request' => $user,
+            'date' => $request->geboortedatum
         ], Response::HTTP_OK);
     }
 
