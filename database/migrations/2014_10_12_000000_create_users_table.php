@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('instagram')->default("");
             $table->string('linkedin')->default("");
             $table->string('tiktok')->default("");
-            $table->date('geboortedatum')->default("");
+            $table->date('geboortedatum')->default(date('d-m-y', strtotime('1970-01-01 00:00:00.000')));
         });
     }
 
