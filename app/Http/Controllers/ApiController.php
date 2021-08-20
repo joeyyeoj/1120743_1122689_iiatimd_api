@@ -236,7 +236,7 @@ class ApiController extends Controller
             $user->tiktok = $request->tiktok;
         }
         if($request->geboortedatum != ''){
-            $user->geboortedatum = Carbon::createFromFormat('Y-m-d', $request->geboortedatum);
+            $user->geboortedatum = Carbon::parse($request->geboortedatum)->format('d/m/Y');
         }
 
         
