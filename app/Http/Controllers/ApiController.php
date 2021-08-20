@@ -236,7 +236,7 @@ class ApiController extends Controller
             $user->tiktok = $request->tiktok;
         }
         if($request->geboortedatum != ''){
-            $user->geboortedatum = date('d-m-y', strtotime($request->geboortedatum) . '00:00:00.000');
+            $user->geboortedatum = date('d-m-y', strtotime($request->geboortedatum));
         }
 
         
