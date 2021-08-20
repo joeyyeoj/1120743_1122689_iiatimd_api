@@ -204,17 +204,39 @@ class ApiController extends Controller
         }
 
         $user = JWTAuth::authenticate($request->token);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->public_email = $request->public_email;
-        $user->telefoonnummer = $request->telefoonnummer;
-        $user->twitter = $request->twitter;
-        $user->facebook = $request->facebook;
-        $user->snapchat = $request->snapchat;
-        $user->instagram = $request->instagram;
-        $user->linkedin = $request->linkedin;
-        $user->tiktok = $request->tiktok;
-        $user->geboortedatum = $request->geboortedatum;
+        if($request->name != ''){
+            $user->name = $request->name;
+        }
+        if($request->email != ''){
+            $user->email = $request->email;
+        }
+        if($request->public_email != ''){
+            $user->public_email = $request->public_email;
+        }
+        if($request->telefoonnummer != ''){
+            $user->telefoonnummer = $request->telefoonnummer;
+        }
+        if($request->twitter != ''){
+            $user->twitter = $request->twitter;
+        }
+        if($request->facebook != ''){
+            $user->facebook = $request->facebook;
+        }
+        if($request->snapchat != ''){
+            $user->snapchat = $request->snapchat;
+        }
+        if($request->instagram != ''){
+            $user->instagram = $request->instagram;
+        }
+        if($request->linkedin != ''){
+            $user->linkedin = $request->linkedin;
+        }
+        if($request->tiktok != ''){
+            $user->tiktok = $request->tiktok;
+        }
+        if($request->geboortedatum != ''){
+            $user->geboortedatum = $request->geboortedatum;
+        }
     
         try {
             $user->save();
