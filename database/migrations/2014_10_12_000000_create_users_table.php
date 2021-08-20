@@ -30,7 +30,7 @@ class CreateUsersTable extends Migration
             $table->string('instagram')->default("")->nullable();
             $table->string('linkedin')->default("")->nullable();
             $table->string('tiktok')->default("")->nullable();
-            $table->date('geboortedatum')->default(to_date(date("d-m-y")))->nullable();
+            $table->date('geboortedatum')->default(date("d-m-yyyy"))->nullable();
         });
     }
 
