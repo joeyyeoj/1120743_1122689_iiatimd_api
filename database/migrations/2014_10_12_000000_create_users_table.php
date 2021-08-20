@@ -22,15 +22,15 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('public_email')->default("-");
-            $table->string('telefoonnummer')->default("-");
-            $table->string('twitter')->default("-");
-            $table->string('facebook')->default("-");
-            $table->string('snapchat')->default("-");
-            $table->string('instagram')->default("-");
-            $table->string('linkedin')->default("-");
-            $table->string('tiktok')->default("-");
-            $table->date('geboortedatum')->default("01-01-1970");
+            $table->string('public_email')->default("");
+            $table->string('telefoonnummer')->default("");
+            $table->string('twitter')->default("");
+            $table->string('facebook')->default("");
+            $table->string('snapchat')->default("");
+            $table->string('instagram')->default("");
+            $table->string('linkedin')->default("");
+            $table->string('tiktok')->default("");
+            $table->date('geboortedatum')->default("");
         });
     }
 
