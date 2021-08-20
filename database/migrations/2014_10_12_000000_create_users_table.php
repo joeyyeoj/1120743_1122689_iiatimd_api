@@ -22,15 +22,15 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->string('public_email')->default("-")->nullable();
-            $table->string('telefoonnummer')->default("-")->nullable();
-            $table->string('twitter')->default("-")->nullable();
-            $table->string('facebook')->default("-")->nullable();
-            $table->string('snapchat')->default("-")->nullable();
-            $table->string('instagram')->default("-")->nullable();
-            $table->string('linkedin')->default("-")->nullable();
-            $table->string('tiktok')->default("-")->nullable();
-            $table->date('geboortedatum')->nullable();
+            $table->string('public_email')->default("")->nullable();
+            $table->string('telefoonnummer')->default("")->nullable();
+            $table->string('twitter')->default("")->nullable();
+            $table->string('facebook')->default("")->nullable();
+            $table->string('snapchat')->default("")->nullable();
+            $table->string('instagram')->default("")->nullable();
+            $table->string('linkedin')->default("")->nullable();
+            $table->string('tiktok')->default("")->nullable();
+            $table->date('geboortedatum')->default(date("d-m-y"))->nullable();
         });
     }
 
